@@ -17,7 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class CoctailApp extends javax.swing.JFrame {
 
-    Blender blender=new Blender(1000);
+    Loggero log=new Loggero("log.log");
+    Blender blender=new Blender(1000,log);
     ArrayList<Ingrediants> ingrediants=new ArrayList<>();
     Cup cup=new Cup();
     Color color;

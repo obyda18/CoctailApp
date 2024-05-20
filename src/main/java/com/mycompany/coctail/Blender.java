@@ -13,10 +13,12 @@ public class Blender {
     private Color color;
     private double calPerMl;
     private Cup cup;
+    Loggero loger;
 
-    public Blender(int capacity) {
+    public Blender(int capacity ,Loggero logger) {
         this.capacity = capacity;
         this.ingredients = new ArrayList<>();
+        this.loger=logger;
     }
 
     public void add(Ingrediants ingredient) throws BlenderOverFlowException {
@@ -26,6 +28,7 @@ public class Blender {
             this.ingredients.add(ingredient);
             this.volume += ingredient.getVolume();
         }
+        loger.log("add" + ingredient.getInfo());
     }
 
     public ArrayList<Ingrediants> getIngredients() {
@@ -101,21 +104,12 @@ public class Blender {
         } else {
             throw new BlenderIsEmptyException();
         }
+        
+                        loger.log("Cup capacity:" + cup.getCapacity());
+
     }
     
-// public int getTotalV() {
-//    int totalV = 0;
-//    for (Ingrediants ing : this.ingredients) {
-//        if (ing instanceof Milk milk) {
-//            totalV += milk.getVolume();
-//        } else if (ing instanceof Suger suger) {
-//            totalV += suger.getVolume();
-//        } else if (ing instanceof Fruits fruits) {
-//            totalV += fruits.getVolume();
-//        }
-//    }
-//    return totalV;
-//}
+
     public int getCapacity() {
         return capacity;
     }
