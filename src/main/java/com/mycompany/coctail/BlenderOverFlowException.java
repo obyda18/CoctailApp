@@ -12,7 +12,7 @@ package com.mycompany.coctail;
 public class BlenderOverFlowException extends Exception{
     
     public BlenderOverFlowException(){
-        super("Ingredients volume exceeds blender capacity");
+        super("Blender OverFlow ");
     }
     
 }

@@ -6,9 +6,9 @@
 package com.mycompany.coctail;
 
 public class BlenderIsEmptyException extends Exception {
-    
-    public BlenderIsEmptyException(){
+
+    public BlenderIsEmptyException() {
         super("The blender is empty!");
     }
-    
+
 }

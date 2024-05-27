@@ -17,12 +17,12 @@ import javax.swing.JOptionPane;
  */
 public class CoctailApp extends javax.swing.JFrame {
 
-    Loggero log=new Loggero("log.log");
-    Blender blender=new Blender(1000,log);
-    ArrayList<Ingrediants> ingrediants=new ArrayList<>();
-    Cup cup=new Cup();
+    Loggero log = new Loggero("log.log");
+    Blender blender = new Blender(1000, log);
+    ArrayList<Ingrediants> ingrediants = new ArrayList<>();
+    Cup cup = new Cup();
     Color color;
-    
+
     /**
      * Creates new form CoctailApp
      */
@@ -145,9 +145,9 @@ public class CoctailApp extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jButton1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
@@ -440,19 +440,25 @@ public class CoctailApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-      
+
+        try {
             // TODO add your handling code here
             blender.blend();
-            JOptionPane.showMessageDialog(this,"Coctail Blendeed");
+            JOptionPane.showMessageDialog(this, "Coctail Blendeed");
             jTextArea1.setText(blender.getInfo());
-           jPanel10.setBackground(blender.getColor());
+            jPanel10.setBackground(blender.getColor());
+        } catch (BlenderIsEmptyException ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Fruits aplFruits=new Fruits(140, Color.GREEN, "apple", 52);
+        Fruits aplFruits = new Fruits(140, Color.GREEN, "apple", 52);
         try {
             blender.add(aplFruits);
+                    JOptionPane.showMessageDialog(this, "added:" + aplFruits.getName());
+
         } catch (BlenderOverFlowException ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
@@ -460,9 +466,11 @@ public class CoctailApp extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         Fruits bananaFruits=new Fruits(140, Color.yellow, "banana", 32);
+        Fruits bananaFruits = new Fruits(140, Color.yellow, "banana", 32);
         try {
             blender.add(bananaFruits);
+                    JOptionPane.showMessageDialog(this, "added:" + bananaFruits.getName());
+
         } catch (BlenderOverFlowException ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
@@ -470,9 +478,11 @@ public class CoctailApp extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         Fruits st=new Fruits(100, Color.red, "Strawberry", 47);
+        Fruits st = new Fruits(100, Color.red, "Strawberry", 47);
         try {
             blender.add(st);
+                    JOptionPane.showMessageDialog(this, "added:" + st.getName());
+
         } catch (BlenderOverFlowException ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
@@ -480,9 +490,11 @@ public class CoctailApp extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-         Fruits ma=new Fruits(170, Color.orange, "mango", 47);
+        Fruits ma = new Fruits(170, Color.orange, "mango", 47);
         try {
             blender.add(ma);
+                    JOptionPane.showMessageDialog(this, "added:" + ma.getName());
+
         } catch (BlenderOverFlowException ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
@@ -490,9 +502,11 @@ public class CoctailApp extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-         Fruits pi=new Fruits(200, Color.red, "pineapple", 50);
+        Fruits pi = new Fruits(200, Color.red, "pineapple", 50);
         try {
             blender.add(pi);
+                    JOptionPane.showMessageDialog(this, "added:" + pi.getName());
+
         } catch (BlenderOverFlowException ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
@@ -500,9 +514,11 @@ public class CoctailApp extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        Fruits pe=new Fruits(150, Color.orange, "peach", 39);
+        Fruits pe = new Fruits(150, Color.orange, "peach", 39);
         try {
             blender.add(pe);
+                    JOptionPane.showMessageDialog(this, "added:" + pe.getName());
+
         } catch (BlenderOverFlowException ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
@@ -510,23 +526,34 @@ public class CoctailApp extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        Milk mil = new Milk(240, Color.white, "organic milk", 200);
-         try {
+        Milk mil = new Milk(240, Color.white, "milk", 200);
+        try {
             blender.add(mil);
+                    JOptionPane.showMessageDialog(this, "added:" + mil.getName());
+
         } catch (BlenderOverFlowException ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
-        
+
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+         Milk mil = new Milk(240, Color.white, "organic milk", 200);
+        try {
+            blender.add(mil);
+                    JOptionPane.showMessageDialog(this, "added:" + mil.getName());
+
+        } catch (BlenderOverFlowException ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
+
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
-        Suger suger =new Suger(30, Color.WHITE, "White Suger",250);
-         try {
+        Suger suger = new Suger(30, Color.WHITE, "White Suger", 250);
+        try {
             blender.add(suger);
         } catch (BlenderOverFlowException ex) {
             JOptionPane.showMessageDialog(this, ex);
@@ -535,8 +562,8 @@ public class CoctailApp extends javax.swing.JFrame {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
-        Suger suger =new Suger(30, Color.orange, "Brown Suger",250);
-         try {
+        Suger suger = new Suger(30, Color.orange, "Brown Suger", 250);
+        try {
             blender.add(suger);
         } catch (BlenderOverFlowException ex) {
             JOptionPane.showMessageDialog(this, ex);
@@ -545,7 +572,7 @@ public class CoctailApp extends javax.swing.JFrame {
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
-        if(jCheckBox1.isSelected()){
+        if (jCheckBox1.isSelected()) {
             try {
                 cup.setCapacity(150);
                 blender.pour(cup);
@@ -557,12 +584,12 @@ public class CoctailApp extends javax.swing.JFrame {
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
-        if(jCheckBox2.isSelected()){
+        if (jCheckBox2.isSelected()) {
             try {
                 cup.setCapacity(200);
                 blender.pour(cup);
             } catch (BlenderIsEmptyException ex) {
-                                JOptionPane.showMessageDialog(this, ex);
+                JOptionPane.showMessageDialog(this, ex);
 
             }
         }
@@ -570,12 +597,12 @@ public class CoctailApp extends javax.swing.JFrame {
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         // TODO add your handling code here:
-         if(jCheckBox3.isSelected()){
+        if (jCheckBox3.isSelected()) {
             try {
                 cup.setCapacity(350);
                 blender.pour(cup);
             } catch (BlenderIsEmptyException ex) {
-                               JOptionPane.showMessageDialog(this, ex);
+                JOptionPane.showMessageDialog(this, ex);
 
             }
         }

@@ -10,8 +10,9 @@ import java.awt.Color;
  *
  * @author smart
  */
-public class Suger extends Ingrediants{
-      private int volume ;
+public class Suger extends Ingrediants {
+
+    private int volume;
     private Color color;
 
     public Suger(int volume, Color color, String name, int calories) {
@@ -20,7 +21,7 @@ public class Suger extends Ingrediants{
         this.color = color;
     }
 
-      @Override
+    @Override
     public int getVolume() {
         return volume;
     }
@@ -29,7 +30,7 @@ public class Suger extends Ingrediants{
         this.volume = volume;
     }
 
-      @Override
+    @Override
     public Color getColor() {
         return color;
     }
@@ -37,9 +38,10 @@ public class Suger extends Ingrediants{
     public void setColor(Color color) {
         this.color = color;
     }
-      @Override
+
+    @Override
     public String getInfo() {
-        return  super.getInfo() + "\n" + "Volume: " + this.volume + "\ncolor" + this.color;
+        return super.getInfo() + "\n" + "Volume: " + this.volume + "\ncolor" + this.color;
     }
 
 }

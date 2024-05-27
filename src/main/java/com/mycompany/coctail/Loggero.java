@@ -12,8 +12,9 @@ import java.util.logging.Level;
  *
  * @author smart
  */
-public class Loggero implements  Log{
-    private  String filpath ;
+public class Loggero implements Log {
+
+    private String filpath;
 
     public Loggero(String filpath) {
         this.filpath = filpath;
@@ -22,14 +23,13 @@ public class Loggero implements  Log{
     @Override
     public void log(String msg) {
         try {
-            FileWriter file= new FileWriter(this.filpath,true);
-            file.write(msg+"\n");
+            FileWriter file = new FileWriter(this.filpath, true);
+            file.write(msg + "\n");
             file.close();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
     }
-    
-    
+
 }

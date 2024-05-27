@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Blender {
 
-    private ArrayList<Ingrediants> ingredients=new ArrayList<>();
+    private ArrayList<Ingrediants> ingredients = new ArrayList<>();
 
     private int capacity;
     private int volume;
@@ -15,10 +15,10 @@ public class Blender {
     private Cup cup;
     Loggero loger;
 
-    public Blender(int capacity ,Loggero logger) {
+    public Blender(int capacity, Loggero logger) {
         this.capacity = capacity;
         this.ingredients = new ArrayList<>();
-        this.loger=logger;
+        this.loger = logger;
     }
 
     public void add(Ingrediants ingredient) throws BlenderOverFlowException {
@@ -67,29 +67,31 @@ public class Blender {
         this.calPerMl = calPerMl;
     }
 
-    public void blend() {
-       
-        int totalR = 0;
-        int totalG = 0;
-        int totalB = 0;
+    public void blend() throws BlenderIsEmptyException {
+        if (volume != 0) {
+            int totalR = 0;
+            int totalG = 0;
+            int totalB = 0;
 
-        for (Ingrediants ing : this.ingredients) {
-            totalR += ing.getColor().getRed();
-            totalG += ing.getColor().getGreen();
-            totalB += ing.getColor().getBlue();
+            for (Ingrediants ing : this.ingredients) {
+                totalR += ing.getColor().getRed();
+                totalG += ing.getColor().getGreen();
+                totalB += ing.getColor().getBlue();
 
-            this.calories += ing.getCalories();
-           
+                this.calories += ing.getCalories();
+
+            }
+
+            int avgR = totalR / this.ingredients.size();
+            int avgG = totalG / this.ingredients.size();
+            int avgB = totalB / this.ingredients.size();
+
+            this.color = new Color(avgR, avgG, avgB);
+            this.calPerMl = (double) this.calories / (double) this.volume;
+            ingredients.clear();
+        } else {
+            throw new BlenderIsEmptyException();
         }
-        
-        
-        int avgR = totalR / this.ingredients.size();
-        int avgG = totalG / this.ingredients.size();
-        int avgB = totalB / this.ingredients.size();
-
-        this.color = new Color(avgR, avgG, avgB);
-        this.calPerMl = (double) this.calories / (double) this.volume;
-        ingredients.clear();
     }
 
     public void pour(Cup cup) throws BlenderIsEmptyException {
@@ -104,11 +106,10 @@ public class Blender {
         } else {
             throw new BlenderIsEmptyException();
         }
-        
-                        loger.log("Cup capacity:" + cup.getCapacity());
+
+        loger.log("Cup capacity:" + cup.getCapacity());
 
     }
-    
 
     public int getCapacity() {
         return capacity;
@@ -129,11 +130,9 @@ public class Blender {
     public double getCalPerMl() {
         return calPerMl;
     }
- 
-   
-    public String getInfo() 
-    {
-        return "calories: " + this.calories + "\n" + "Volum:" + this.volume + "\nCalories per cup: " + this.calPerMl ;
+
+    public String getInfo() {
+        return "calories: " + this.calories + "\n" + "Volum:" + this.volume + "\nCalories per cup: " + this.calPerMl;
     }
-    
+
 }

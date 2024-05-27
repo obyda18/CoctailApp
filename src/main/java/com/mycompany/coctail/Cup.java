@@ -29,16 +29,13 @@ public class Cup {
         this.capacity = capacity;
         this.calories = calories;
     }
-    
-    public void setCalories(int calories){
+
+    public void setCalories(int calories) {
         this.calories = calories;
     }
 
-    
     public String getInfo() {
-        return "Cup info:" + "capacity=" + capacity + ", calories=" + calories ;
+        return "Cup info:" + "capacity=" + capacity + ", calories=" + calories;
     }
-    
-    
-    
+
 }
